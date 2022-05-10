@@ -11,38 +11,38 @@ def draw_circle(x, y, r): #x,y środek okręgu
 
     for i in range(0, 365, 5):
         a = math.radians(i)
-        turtle.setpos(x + r* math.cos(a), y + r* math.sin(a))
+        turtle.setpos(x + r* math.cos(alpha), y + r* math.sin(alpha))
 
 draw_circle(100, 100, 50)
 turtle.mainloop()
 
 class Spiro:
-    def __init__(self, xc, yc, col, r_great, r, l):
+    def __init__(self, x_centre, y_centre, colour, r_great, r, l):
         self.t = turtle.Turtle()
         self.t.shape('turtle')
         self.step = 5
         self.drawing_complete = False
 
-        self.setparams(xc, yc, col, r_great, r, l)
+        self.setparams(x_centre, y_centre, colour, r_great, r, l)
 
         self.restart()
 
-    def set_params(self, xc, yc, col, r_great, r, l):
-        self.xc = xc
-        self.yc = yc
-        self.r_great = r_great
-        self.r = r
+    def set_params(self, x_centre, y_centre, colour, r_great, r, l):
+        self.x_centre= x_centre
+        self.y_centre = y_centre
+        self.r_great = int(r_great)
+        self.r = int(r)
         self.l = l
-        self.col = col
+        self.colour = colour
 
-        gcdVal = gcd(self.r, self.r_great)
-        self.nRot = self.r/gcdVal
+        gcdVal= gcd(self.r, self.r_great) #najwiekszy wspolny dzielnik
+        self.nRot = self.r//gcdVal
 
         self.k = r/float(r_great)
 
-        self.color(*col)
+        self.colour(*colour)
 
-        self.a = 0
+        self.alpha = 0
 
 
 
